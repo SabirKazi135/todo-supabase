@@ -236,8 +236,8 @@ export default function TodoApp() {
             onChange={(e) => setDueDate(e.target.value)}
             className="rounded-md border border-gray-300 bg-gray-100 px-2 py-2 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
           />
-          <button className="flex items-center gap-1 rounded-md bg-blue-600 px-3 py-2 text-sm text-gray-100 hover:bg-blue-700">
-            <Plus size={15} /> <span className="hidden sm:inline">Add</span>
+          <button className="flex items-center justify-center gap-1 rounded-md bg-blue-600 px-3 py-2 text-center text-sm text-gray-100 hover:bg-blue-700">
+            <Plus size={15} />
           </button>
         </form>
 
