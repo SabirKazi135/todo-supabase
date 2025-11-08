@@ -54,7 +54,24 @@ export default function TodoApp() {
           table: 'todos',
           filter: `user_id=eq.${user.id}`,
         },
-        () => fetchTodos(user.id),
+        (payload) => {
+          console.log('Realtime event:', payload.eventType);
+
+          setTasks((prev) => {
+            switch (payload.eventType) {
+              case 'INSERT':
+                return [...prev, payload.new];
+              case 'UPDATE':
+                return prev.map((t) =>
+                  t.id === payload.new.id ? payload.new : t,
+                );
+              case 'DELETE':
+                return prev.filter((t) => t.id !== payload.old.id);
+              default:
+                return prev;
+            }
+          });
+        },
       )
       .subscribe();
 
